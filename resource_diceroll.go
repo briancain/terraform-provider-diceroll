@@ -14,6 +14,12 @@ func resourceDiceRoll() *schema.Resource {
 		ReadContext:   resourceDiceRollRead,
 		UpdateContext: resourceDiceRollUpdate,
 		DeleteContext: resourceDiceRollDelete,
+		Schema: map[string]*schema.Schema{
+			"die": &schema.Schema{
+				Sides:    schema.TypeInt,
+				Required: true,
+			},
+		},
 	}
 }
 
