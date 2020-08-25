@@ -1,40 +1,39 @@
 package main
 
 import (
-	"fmt"
-	"math/rand"
+	//"fmt"
+	//"math/rand"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 )
 
 func resourceDiceRoll() *schema.Resource {
 	return &schema.Resource{
-		CreateContext: resourceDiceRollCreate,
-		ReadContext:   resourceDiceRollRead,
-		UpdateContext: resourceDiceRollUpdate,
-		DeleteContext: resourceDiceRollDelete,
+		Create: resourceDiceRollCreate,
+		Read:   resourceDiceRollRead,
+		Update: resourceDiceRollUpdate,
+		Delete: resourceDiceRollDelete,
 		Schema: map[string]*schema.Schema{
-			"die": &schema.Schema{
-				Sides:    schema.TypeInt,
+			"die_sides": &schema.Schema{
+				Type:    schema.TypeInt,
 				Required: true,
 			},
 		},
 	}
 }
 
-func resourceDiceRollCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+func resourceDiceRollCreate(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
 
-func resourceDiceRollRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+func resourceDiceRollRead(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
 
-func resourceDiceRollUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+func resourceDiceRollUpdate(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
 
-func resourceDiceRollDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+func resourceDiceRollDelete(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
