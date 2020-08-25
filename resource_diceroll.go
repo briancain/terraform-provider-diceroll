@@ -1,8 +1,8 @@
 package main
 
 import (
-	//"fmt"
-	//"math/rand"
+	"fmt"
+	"math/rand"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
@@ -23,7 +23,8 @@ func resourceDiceRoll() *schema.Resource {
 }
 
 func resourceDiceRollCreate(d *schema.ResourceData, m interface{}) error {
-	return nil
+	d.SetId(fmt.Sprintf("%x", rand.Int()))
+	return resourceDiceRollRead(d, m)
 }
 
 func resourceDiceRollRead(d *schema.ResourceData, m interface{}) error {
@@ -31,7 +32,7 @@ func resourceDiceRollRead(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceDiceRollUpdate(d *schema.ResourceData, m interface{}) error {
-	return nil
+	return resourceDiceRollRead(d, m)
 }
 
 func resourceDiceRollDelete(d *schema.ResourceData, m interface{}) error {
