@@ -6,4 +6,9 @@ import (
 
 // Provider returns a Terraform provider schema.
 func Provider() *schema.Provider {
+	return &schema.Provider{
+		ResourcesMap: map[string]*schema.Resource{
+			"dice_roll": resourceDiceRoll(),
+		},
+	}
 }
