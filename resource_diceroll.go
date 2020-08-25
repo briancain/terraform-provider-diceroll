@@ -15,7 +15,7 @@ func resourceDiceRoll() *schema.Resource {
 		Delete: resourceDiceRollDelete,
 		Schema: map[string]*schema.Schema{
 			"die_sides": &schema.Schema{
-				Type:    schema.TypeInt,
+				Type:     schema.TypeInt,
 				Required: true,
 			},
 		},
