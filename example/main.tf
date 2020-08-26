@@ -1,0 +1,7 @@
+provider "diceroll" {
+
+}
+
+module "./diceroll" {
+
+}
