@@ -1,3 +1,6 @@
+# Ignore the built provider binary
+terraform-provider-diceroll
+
 *.dll
 *.exe
 example.tf
