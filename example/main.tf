@@ -1,7 +1,14 @@
 provider "diceroll" {
-
+  source = "briancain/diceroll"
+  version = "0.0.4"
 }
 
-module "./diceroll" {
-
+resource "dice" "Yahtzee" {
+  dice {
+    die {
+      id = 1
+      sides = 6
+    }
+    quantity = 6
+  }
 }
