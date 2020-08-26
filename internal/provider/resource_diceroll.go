@@ -61,6 +61,11 @@ func resourceDiceRollCreate(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceDiceRollRead(d *schema.ResourceData, m interface{}) error {
+	//dice := d.Get("dice").([]interface{})
+
+	//for _, die := range dice {
+	//	dc := die.(map[string]interface{})
+	//}
 	return nil
 }
 
