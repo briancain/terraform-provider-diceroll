@@ -14,9 +14,42 @@ func resourceDiceRoll() *schema.Resource {
 		Update: resourceDiceRollUpdate,
 		Delete: resourceDiceRollDelete,
 		Schema: map[string]*schema.Schema{
-			"die_sides": &schema.Schema{
-				Type:     schema.TypeInt,
+			"dice": &schema.Schema{
+				Type:     schema.TypeList,
 				Required: true,
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+						"die": &schema.Schema{
+							Type:     schema.TypeList,
+							MaxItems: 1,
+							Required: true,
+							Elem: &schema.Resource{
+								Schema: map[string]*schema.Schema{
+									"id": &schema.Schema{
+										Type:     schema.TypeInt,
+										Required: true,
+									},
+									"name": &schema.Schema{
+										Type:     schema.TypeString,
+										Computed: true,
+									},
+									"sides": &schema.Schema{
+										Type:     schema.TypeString,
+										Computed: true,
+									},
+									"description": &schema.Schema{
+										Type:     schema.TypeString,
+										Computed: true,
+									},
+								},
+							},
+						},
+						"quantity": &schema.Schema{
+							Type:     schema.TypeInt,
+							Required: true,
+						},
+					},
+				},
 			},
 		},
 	}
