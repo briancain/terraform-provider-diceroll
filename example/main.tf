@@ -10,7 +10,7 @@ terraform {
 resource "diceroll_roll" "yahtzee" {
   quantity = 6
   sides = 6
-  seed = "yahtzeetest"
+  seed = "yahtzee!"
 }
 
 resource "diceroll_roll" "dnd" {
