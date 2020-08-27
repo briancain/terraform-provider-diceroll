@@ -11,7 +11,7 @@ func resourceDiceRoll() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceDiceRollCreate,
 		Read:   resourceDiceRollRead,
-		Update: resourceDiceRollUpdate,
+		Update: schema.Noop,
 		Delete: resourceDiceRollDelete,
 		Schema: map[string]*schema.Schema{
 			"dice": &schema.Schema{
@@ -74,10 +74,6 @@ func resourceDiceRollRead(d *schema.ResourceData, m interface{}) error {
 	//	dc := die.(map[string]interface{})
 	//}
 	return nil
-}
-
-func resourceDiceRollUpdate(d *schema.ResourceData, m interface{}) error {
-	return resourceDiceRollRead(d, m)
 }
 
 func resourceDiceRollDelete(d *schema.ResourceData, m interface{}) error {
