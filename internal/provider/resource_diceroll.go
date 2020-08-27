@@ -71,10 +71,7 @@ func resourceDiceRollCreate(d *schema.ResourceData, m interface{}) error {
 	rand := NewRand(seed)
 
 	//dice := d.Get("dice").([]interface{})
-	//for _, die := range dice {
-	//	dc := die.(map[string]interface{})
-	//	dv := dc["die"].([]interface{})[0]
-	//	//result := make([]interface{}, 0, quantity)
+	//for _, dv := range dice {
 	//}
 	d.SetId(fmt.Sprintf("%x", rand.Int()))
 	return resourceDiceRollRead(d, m)
