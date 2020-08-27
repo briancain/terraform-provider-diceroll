@@ -31,15 +31,15 @@ func resourceDiceRoll() *schema.Resource {
 									},
 									"name": &schema.Schema{
 										Type:     schema.TypeString,
-										Computed: true,
+										Optional: true,
 									},
 									"sides": &schema.Schema{
 										Type:     schema.TypeInt,
-										Computed: true,
+										Required: true,
 									},
 									"description": &schema.Schema{
 										Type:     schema.TypeString,
-										Computed: true,
+										Optional: true,
 									},
 								},
 							},
