@@ -2,12 +2,12 @@ terraform {
   required_providers {
     diceroll = {
       source  = "briancain/diceroll"
-      version = "0.0.5"
+      version = "0.0.6"
     }
   }
 }
 
-resource "dice_roll" "yahtzee" {
+resource "diceroll_roll" "yahtzee" {
   dice {
     die {
       id    = 1
