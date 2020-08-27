@@ -2,7 +2,6 @@ package diceroll
 
 import (
 	"fmt"
-	"math/rand"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
@@ -14,6 +13,10 @@ func resourceDiceRoll() *schema.Resource {
 		Update: schema.Noop,
 		Delete: schema.RemoveFromState,
 		Schema: map[string]*schema.Schema{
+			"seed": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+			},
 			"dice": &schema.Schema{
 				Type:     schema.TypeList,
 				Required: true,
@@ -51,11 +54,6 @@ func resourceDiceRoll() *schema.Resource {
 								Type: schema.TypeString,
 							},
 						},
-						"seed": {
-							Type:     schema.TypeString,
-							Optional: true,
-							ForceNew: true,
-						},
 						"quantity": &schema.Schema{
 							Type:     schema.TypeInt,
 							Required: true,
@@ -68,17 +66,20 @@ func resourceDiceRoll() *schema.Resource {
 }
 
 func resourceDiceRollCreate(d *schema.ResourceData, m interface{}) error {
-	d.SetId(fmt.Sprintf("%x", rand.Int()))
-	return resourceDiceRollRead(d, m)
-}
-
-func resourceDiceRollRead(d *schema.ResourceData, m interface{}) error {
 	//dice := d.Get("dice").([]interface{})
+	quantity := d.Get("quantity").(int)
+	seed := d.Get("seed").(string)
+	rand := NewRand(seed)
+	result := make([]interface{}, 0, quantity)
 
 	//for _, die := range dice {
 	//	dc := die.(map[string]interface{})
+	//  dv := dc["die"].([]interface{})[0]
+
 	//}
-	return nil
+	d.SetId(fmt.Sprintf("%x", rand.Int()))
+	d.Set("result", result)
+	return resourceDiceRollRead(d, m)
 }
 
 func resourceDiceRollRead(d *schema.ResourceData, m interface{}) error {
