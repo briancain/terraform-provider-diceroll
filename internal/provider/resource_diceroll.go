@@ -48,16 +48,16 @@ func resourceDiceRoll() *schema.Resource {
 								},
 							},
 						},
+						"quantity": &schema.Schema{
+							Type:     schema.TypeInt,
+							Required: true,
+						},
 						"result": {
 							Type:     schema.TypeList,
 							Computed: true,
 							Elem: &schema.Schema{
 								Type: schema.TypeString,
 							},
-						},
-						"quantity": &schema.Schema{
-							Type:     schema.TypeInt,
-							Required: true,
 						},
 					},
 				},
@@ -67,19 +67,16 @@ func resourceDiceRoll() *schema.Resource {
 }
 
 func resourceDiceRollCreate(d *schema.ResourceData, m interface{}) error {
-	//dice := d.Get("dice").([]interface{})
-	quantity := d.Get("quantity").(int)
 	seed := d.Get("seed").(string)
 	rand := NewRand(seed)
-	result := make([]interface{}, 0, quantity)
 
+	//dice := d.Get("dice").([]interface{})
 	//for _, die := range dice {
 	//	dc := die.(map[string]interface{})
-	//  dv := dc["die"].([]interface{})[0]
-
+	//	dv := dc["die"].([]interface{})[0]
+	//	//result := make([]interface{}, 0, quantity)
 	//}
 	d.SetId(fmt.Sprintf("%x", rand.Int()))
-	d.Set("result", result)
 	return resourceDiceRollRead(d, m)
 }
 
