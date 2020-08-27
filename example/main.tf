@@ -15,6 +15,8 @@ resource "diceroll_roll" "yahtzee" {
     }
     quantity = 6
   }
+
+  seed = "yahtzeetest"
 }
 
 output "yahtzee_roll" {
