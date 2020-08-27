@@ -3,7 +3,7 @@ HOSTNAME=hashicorp.com
 NAMESPACE=briancain
 NAME=diceroll
 BINARY=terraform-provider-${NAME}
-VERSION=0.0.9
+VERSION=0.1.0
 OS_ARCH=darwin_amd64
 
 default: install
