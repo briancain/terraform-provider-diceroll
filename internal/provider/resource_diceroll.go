@@ -12,7 +12,7 @@ func resourceDiceRoll() *schema.Resource {
 		Create: resourceDiceRollCreate,
 		Read:   resourceDiceRollRead,
 		Update: schema.Noop,
-		Delete: resourceDiceRollDelete,
+		Delete: schema.RemoveFromState,
 		Schema: map[string]*schema.Schema{
 			"dice": &schema.Schema{
 				Type:     schema.TypeList,
@@ -76,6 +76,6 @@ func resourceDiceRollRead(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
 
-func resourceDiceRollDelete(d *schema.ResourceData, m interface{}) error {
+func resourceDiceRollRead(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
