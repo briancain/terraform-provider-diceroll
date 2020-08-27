@@ -13,6 +13,16 @@ resource "diceroll_roll" "yahtzee" {
   seed = "yahtzeetest"
 }
 
+resource "diceroll_roll" "dnd" {
+  quantity = 4
+  sides = 20
+  seed = "dungeonsanddragons"
+}
+
 output "yahtzee_roll" {
   value = diceroll_roll.yahtzee
+}
+
+output "dnd_roll" {
+  value = diceroll_roll.dnd
 }
