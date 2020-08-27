@@ -2,7 +2,7 @@ terraform {
   required_providers {
     diceroll = {
       source  = "briancain/diceroll"
-      version = "0.0.7"
+      version = "0.0.8"
     }
   }
 }
@@ -17,6 +17,6 @@ resource "diceroll_roll" "yahtzee" {
   }
 }
 
-output "roll_dice" {
-  value = dice.yahtzee
+output "yahtzee_roll" {
+  value = diceroll_roll.yahtzee
 }
