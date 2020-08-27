@@ -18,48 +18,22 @@ func resourceDiceRoll() *schema.Resource {
 				ForceNew: true,
 				Optional: true,
 			},
-			"dice": &schema.Schema{
+			"quantity": {
+				Type:     schema.TypeInt,
+				Optional: true,
+				Default:  1,
+			},
+			"sides": {
+				Type:     schema.TypeInt,
+				Optional: true,
+				Default:  20,
+				ForceNew: true,
+			},
+			"result": {
 				Type:     schema.TypeList,
-				Required: true,
-				Elem: &schema.Resource{
-					Schema: map[string]*schema.Schema{
-						"die": &schema.Schema{
-							Type:     schema.TypeList,
-							MaxItems: 1,
-							Required: true,
-							Elem: &schema.Resource{
-								Schema: map[string]*schema.Schema{
-									"id": &schema.Schema{
-										Type:     schema.TypeInt,
-										Required: true,
-									},
-									"name": &schema.Schema{
-										Type:     schema.TypeString,
-										Optional: true,
-									},
-									"sides": &schema.Schema{
-										Type:     schema.TypeInt,
-										Required: true,
-									},
-									"description": &schema.Schema{
-										Type:     schema.TypeString,
-										Optional: true,
-									},
-								},
-							},
-						},
-						"quantity": &schema.Schema{
-							Type:     schema.TypeInt,
-							Required: true,
-						},
-						"result": {
-							Type:     schema.TypeList,
-							Computed: true,
-							Elem: &schema.Schema{
-								Type: schema.TypeString,
-							},
-						},
-					},
+				Computed: true,
+				Elem: &schema.Schema{
+					Type: schema.TypeInt,
 				},
 			},
 		},
@@ -69,10 +43,16 @@ func resourceDiceRoll() *schema.Resource {
 func resourceDiceRollCreate(d *schema.ResourceData, m interface{}) error {
 	seed := d.Get("seed").(string)
 	rand := NewRand(seed)
+	sides := d.Get("sides").(int)
+	quantity := d.Get("quantity").(int)
+	result := make([]int, quantity)
 
-	//dice := d.Get("dice").([]interface{}) // all dice resources
+	for i := 0; i < quantity; i++ {
+		r := rand.Intn(sides)
+		result[i] = r
+	}
 
-	//d.Set("dice", dice_final)
+	d.Set("result", result)
 	d.SetId(fmt.Sprintf("%x", rand.Int()))
 	return resourceDiceRollRead(d, m)
 }

@@ -8,22 +8,8 @@ terraform {
 }
 
 resource "diceroll_roll" "yahtzee" {
-  dice {
-    die {
-      id    = 1
-      sides = 6
-    }
-    quantity = 6
-  }
-
-  dice {
-    die {
-      id    = 2
-      sides = 20
-    }
-    quantity = 2
-  }
-
+  quantity = 6
+  sides = 6
   seed = "yahtzeetest"
 }
 
