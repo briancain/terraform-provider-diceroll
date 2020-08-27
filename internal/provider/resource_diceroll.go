@@ -15,6 +15,7 @@ func resourceDiceRoll() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"seed": &schema.Schema{
 				Type:     schema.TypeString,
+				ForceNew: true,
 				Optional: true,
 			},
 			"dice": &schema.Schema{
