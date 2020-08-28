@@ -20,10 +20,10 @@ func resourceDiceRoll() *schema.Resource {
 				Required: true,
 			},
 			"quantity": {
-				Type:     schema.TypeInt,
-				Optional: true,
+				Type:         schema.TypeInt,
+				Optional:     true,
 				ValidateFunc: validation.IntAtLeast(1),
-				Default:  1,
+				Default:      1,
 			},
 			"sides": {
 				Type:         schema.TypeInt,
