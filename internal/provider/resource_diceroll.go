@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 )
 
 func resourceDiceRoll() *schema.Resource {
@@ -24,10 +25,11 @@ func resourceDiceRoll() *schema.Resource {
 				Default:  1,
 			},
 			"sides": {
-				Type:     schema.TypeInt,
-				Optional: true,
-				Default:  20,
-				ForceNew: true,
+				Type:         schema.TypeInt,
+				Optional:     true,
+				Default:      6,
+				ValidateFunc: validation.IntAtLeast(1),
+				ForceNew:     true,
 			},
 			"result": {
 				Type:     schema.TypeList,
@@ -48,7 +50,7 @@ func resourceDiceRollCreate(d *schema.ResourceData, m interface{}) error {
 	result := make([]int, quantity)
 
 	for i := 0; i < quantity; i++ {
-		r := rand.Intn(sides - 1) + 1 // Dice don't have a 0
+		r := rand.Intn(sides-1) + 1 // Dice don't have a 0
 		result[i] = r
 	}
 
