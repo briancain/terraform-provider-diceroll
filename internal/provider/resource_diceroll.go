@@ -32,6 +32,10 @@ func resourceDiceRoll() *schema.Resource {
 				ValidateFunc: validation.IntAtLeast(1),
 				ForceNew:     true,
 			},
+			"description": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+			},
 			"result": {
 				Type:     schema.TypeList,
 				Computed: true,
