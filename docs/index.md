@@ -49,20 +49,22 @@ Terraform will perform the following actions:
 
   # diceroll_roll.dnd will be created
   + resource "diceroll_roll" "dnd" {
-      + id       = (known after apply)
-      + quantity = 4
-      + result   = (known after apply)
-      + seed     = "dungeonsanddragons"
-      + sides    = 20
+      + calculated_total = (known after apply)
+      + id               = (known after apply)
+      + quantity         = 4
+      + result           = (known after apply)
+      + seed             = "dungeonsanddragons"
+      + sides            = 20
     }
 
   # diceroll_roll.yahtzee will be created
   + resource "diceroll_roll" "yahtzee" {
-      + id       = (known after apply)
-      + quantity = 6
-      + result   = (known after apply)
-      + seed     = "yahtzee!"
-      + sides    = 6
+      + calculated_total = (known after apply)
+      + id               = (known after apply)
+      + quantity         = 6
+      + result           = (known after apply)
+      + seed             = "yahtzee!"
+      + sides            = 6
     }
 
 Plan: 2 to add, 0 to change, 0 to destroy.
@@ -83,6 +85,7 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 Outputs:
 
 dnd_roll = {
+  "calculated_total" = 48
   "id" = "3692300b2a466f57"
   "quantity" = 4
   "result" = [
@@ -95,6 +98,7 @@ dnd_roll = {
   "sides" = 20
 }
 yahtzee_roll = {
+  "calculated_total" = 15
   "id" = "6ae6a5b3eecadac1"
   "quantity" = 6
   "result" = [
@@ -107,5 +111,4 @@ yahtzee_roll = {
   ]
   "seed" = "yahtzee!"
   "sides" = 6
-}
 ```
