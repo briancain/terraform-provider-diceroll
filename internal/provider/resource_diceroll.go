@@ -22,6 +22,7 @@ func resourceDiceRoll() *schema.Resource {
 			"quantity": {
 				Type:     schema.TypeInt,
 				Optional: true,
+				ValidateFunc: validation.IntAtLeast(1),
 				Default:  1,
 			},
 			"sides": {
