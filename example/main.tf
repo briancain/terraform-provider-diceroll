@@ -2,7 +2,7 @@ terraform {
   required_providers {
     diceroll = {
       source  = "briancain/diceroll"
-      version = "0.0.9"
+      version = "0.1.0"
     }
   }
 }
