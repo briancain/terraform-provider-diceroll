@@ -19,8 +19,8 @@ in the resource.
 The following values are automatically computed by Terraform given the arguments
 above defined in a resource.
 
-* `computed_total` (Int) This field is the sum of all die rolled for a given resource
-* `result` (Array of Ints) This field contains the resulting roll for each die
+* `computed_total` - (Int) This field is the sum of all die rolled for a given resource.
+* `result` - (Array of Ints) This field contains the resulting roll for each die
 defined inside the resource.
 
 ## Usage
