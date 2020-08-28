@@ -1,6 +1,27 @@
 # terraform-provider-diceroll
 
-This provider is still a work in progress. These docs will be updated once it is functional.
+A terraform provider to roll x number of y sided die :game_die:
+
+## Argument Reference
+
+* `description` - (Optional) This field can be used to give a short description
+of the die used in your resource.
+* `seed` - (Required) This string is used to seed the random number generator
+used to roll the die.
+* `sides` - (Required, defaults to 1) Can be used to define how many sides
+your die will have. There is no real upper limit to this number beyond what
+Terraform supports as a `TypeInt`.
+* `quantity` - (Optional, defaults to 1) The number of die to roll together
+in the resource.
+
+### Computed Arguments
+
+The following values are automatically computed by Terraform given the arguments
+above defined in a resource.
+
+* `computed_total` (int) This field is the sum of all die rolled for a given resource
+* `result` (Array of Ints) This field contains the resulting roll for each die
+defined inside the resource.
 
 ## Usage
 
