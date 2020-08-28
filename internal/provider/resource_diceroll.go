@@ -17,7 +17,7 @@ func resourceDiceRoll() *schema.Resource {
 			"seed": &schema.Schema{
 				Type:     schema.TypeString,
 				ForceNew: true,
-				Optional: true,
+				Required: true,
 			},
 			"quantity": {
 				Type:     schema.TypeInt,
