@@ -48,7 +48,7 @@ func resourceDiceRollCreate(d *schema.ResourceData, m interface{}) error {
 	result := make([]int, quantity)
 
 	for i := 0; i < quantity; i++ {
-		r := rand.Intn(sides)
+		r := rand.Intn(sides - 1) + 1 // Dice don't have a 0
 		result[i] = r
 	}
 
