@@ -2,6 +2,27 @@
 
 An example provider that rolls x,y die.
 
+```hlc
+terraform {
+  required_providers {
+    diceroll = {
+      source  = "briancain/diceroll"
+      version = ">=0.1.2"
+    }
+  }
+}
+
+resource "diceroll_roll" "yahtzee" {
+  quantity = 6
+  sides = 6
+  seed = "yahtzee!"
+}
+
+output "yahtzee_roll" {
+  value = diceroll_roll.yahtzee
+}
+```
+
 ## Development
 
 A `Makefile` has been provided for building and installing this terraform provider.o
