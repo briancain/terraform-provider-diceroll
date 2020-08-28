@@ -43,6 +43,10 @@ func resourceDiceRoll() *schema.Resource {
 					Type: schema.TypeInt,
 				},
 			},
+			"calculated_total": {
+				Type:     schema.TypeInt,
+				Computed: true,
+			},
 		},
 	}
 }
@@ -53,13 +57,16 @@ func resourceDiceRollCreate(d *schema.ResourceData, m interface{}) error {
 	sides := d.Get("sides").(int)
 	quantity := d.Get("quantity").(int)
 	result := make([]int, quantity)
+	total := 0
 
 	for i := 0; i < quantity; i++ {
 		r := rand.Intn(sides-1) + 1 // Dice don't have a 0
+		total += r
 		result[i] = r
 	}
 
 	d.Set("result", result)
+	d.Set("calculated_total", total)
 	d.SetId(fmt.Sprintf("%x", rand.Int()))
 	return resourceDiceRollRead(d, m)
 }
