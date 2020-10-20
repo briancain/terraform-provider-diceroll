@@ -23,6 +23,11 @@ output "yahtzee_roll" {
 }
 ```
 
+## Example Module
+
+[terraform-diceroll-dnd](https://github.com/briancain/terraform-diceroll-dnd) is
+an example terraform module that uses this provider to roll die.
+
 ## Development
 
 A `Makefile` has been provided for building and installing this terraform provider.o
